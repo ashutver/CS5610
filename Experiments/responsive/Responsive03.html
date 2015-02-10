@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../CSS/ResponsiveSheet.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Responsive Menu</h1>
+            <nav>
+                <a href="#">Files</a>
+                <a href="#">Tools</a>
+                <a href="#">Profile</a>
+                <a href="#">Help</a>
+                <a href="#">Problems</a>
+                <a href="#">Contact Us</a>
+            </nav>
+            <a href="#menu" id="menu-link">Menu</a>
+            </header>
+            <div class="row">
+                <div class="col-6">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <div class="col-6">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+            </div>
+    </div>
+    
+    <a name="menu"></a>
+    <nav id="small-menu">
+        <hr/>
+        <a href="#">Files</a><br />
+        <a href="#">Tools</a><br />
+        <a href="#">Profile</a><br />
+        <a href="#">Help</a><br />
+        <a href="#">Problems</a><br />
+        <a href="#">Contact Us</a><br />
+    </nav>
+    <div class="div_exp">
+        <hr />
+        <h4> About the experiment</h4>
+
+        <p>
+            Extending Experiment1, here I added a menu bar stretched horizontally for wider screens like desktop and tablets, but for smaller screens like mobile screens, this tabular form is replaced by a single menu. once you click on it it takes user to bottom where the links are displaced horizontally.
+        </p>
+    </div>
+    <hr />
+    <div style="margin-top:10px;">
+        <h4> Code Snippet</h4>
+        <pre>
+           #menu-link,#small-menu{
+            display:none;
+            }
+             @media screen and (max-width:500px) {
+              #menu-link,#small-menu{
+                display:block;
+            }
+        }
+        </pre>
+    </div>
+    <hr />
+    <h4> Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/Experiments/responsive/Responsive03.html" target="_blank">View HTML Source</a>
+    <a href="../../fileview/Default.aspx?~/Experiments/CSS/ResponsiveSheet.css" target="_blank">View CSS Source</a>
+    <hr />
+    
+</body>
+</html>

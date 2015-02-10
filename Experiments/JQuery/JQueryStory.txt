@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../Experiments/JQuery/JQueryStory.txt                   JQuery Experiments
+JQuery01.html        Draggable Components
+JQuery02.html        JQuery clickable components
+JQuery03.html        Icon details editable
+JQuery04.html		 Add Components
+JQuery05.html		 Related Picture Display

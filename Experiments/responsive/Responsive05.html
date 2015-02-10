@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../CSS/ResponsiveSheet03.css" />
+</head>
+<body>
+    <div class="header">
+        <h1> Responsive table</h1>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Book Author</th>
+                        <th>Book cost</th>
+                        <th>Book Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>The Goldfinch</td>
+                        <td>Donna Tortt</td>
+                        <td>$ 7.99</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>Inferno</td>
+                        <td>Dan Brown</td>
+                        <td>$ 8.99</td>
+                        <td>Available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+       </div>
+    <div >
+        <hr />
+        <h4> About the experiment</h4>
+
+        <p>
+            Extending Responsive Experiments, I have worked on a table. In bigger screens table can be well placed but in samaller screens it is very difficult to present a table in tabular form so for smaller screens, using CSS, I am showing data in form of sheets.
+        </p>
+    </div>
+    <hr />
+    <div style="margin-top:10px;">
+        <h4> Code Snippet</h4>
+        <pre>
+             @media screen and  (max-width:500px) {
+             body {
+                     background-color: aliceblue;
+              }
+             table,thead,tbody,th,td,tr{
+                display:block;
+               }
+             table{
+               width:100%
+              }
+             thead tr {
+                    position: absolute;
+                    /*here we need to hide the headers*/
+                    top: -9999px;
+                    left: -9999px;
+                }
+             tr {
+               border: 1px solid indianred;
+               }
+              td {
+                /* td should behave as row */
+                border: none;
+                border-bottom: 1px solid cadetblue;
+                position: relative;
+                padding-left: 65%;
+               }
+             td:before {
+                    /*row header */
+                    position: absolute; 
+                    top: 6px;
+                    left: 6px;
+                    width: 45%;
+                }
+             /*Labeling the data*/
+                  td:nth-of-type(1):before {
+                    content: "Book Name";
+                   }
+                  td:nth-of-type(2):before {
+                    content: "Book Author";
+                  }
+                  td:nth-of-type(3):before {
+                    content: "Book Cost";
+                  }
+                  td:nth-of-type(4):before {
+                    content: "Availability";
+                  }
+         
+              }
+        </pre>
+    </div>
+    <hr />
+    <h4> Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/Experiments/responsive/Responsive05.html" target="_blank">View HTML Source</a>
+    <a href="../../fileview/Default.aspx?~/Experiments/CSS/ResponsiveSheet03.css" target="_blank">View CSS Source</a>
+    <hr />
+    <h4>References</h4>
+    <a href="http://net4.ccs.neu.edu/home/rasala/story/index.htm?../2014Fall/5610/" target="_blank">TA Sneha Experiments</a></body>
+</html>

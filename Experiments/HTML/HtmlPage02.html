@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1> HTML Inputs</h1>
+    <div>
+        <h3>1. TextInput</h3>
+        <label for="userName">UserName :</label>
+        <input type="text" name="userId" title="UserName" placeholder="username" id="userName" />
+        <div>
+            <b>Password:</b>
+            <input type="password" name="password" />
+        </div>
+    </div>
+    <h3>2. Radio Button</h3>
+    <div>
+        <label for="language">Favourite Programming language:</label><br />
+        <input type="radio" name="language" value="JAVA">JAVA <br />
+        <input type="radio" name="language" value="PYTHON">PYTHON
+    </div>
+    <h3>3. CheckBox</h3>
+    <div>
+        <label for="category">Favourite Programming language</label><br />
+        <input type="checkbox" name="category" value="COMEDY">COMEDY <br />
+        <input type="checkbox" name="category" value="HORROR">HORROR
+    </div>
+    
+   
+    <h3>4. DropDown</h3>
+    <div>
+        <label for="music">Music Genre</label>
+        <div>
+            <select name="music">
+                <option value="ROCK">Rock</option>
+                <option value="CLASSICAL">Classical</option>
+                <option value="JAZZ">Jazz</option>
+            </select>
+        </div>
+    </div>
+    <h3>5. DataList</h3>
+    <div>
+        <label for="music-2">Music Genre</label>
+        <div>
+            <input list="music-list" name="music-2" />
+            <datalist id="music-list">
+                <option value="ROCK">Rock</option>
+                <option value="CLASSICAL">Classical</option>
+                <option value="JAZZ">Jazz</option>
+            </datalist>
+        </div>
+    </div>
+    <h3>6. Various other inputs</h3>
+    <b> i. Email</b>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+    </div><br />
+    <b> ii. Date</b>
+    <div>
+        <label for="date">Date</label>
+        <input type="datetime-local" name="date" id="date" />
+    </div><br />
+    <b> iii. Rating</b>
+    <div>
+        <label for="rating">Rating</label>
+        <input type="number" min="0" max="5" name="rating" id="rating" placeholder="5" />
+    </div>
+    <br />
+    <b> iv. Rating range</b>
+    <div>
+        <label for="rating-range">Rating range</label>
+        <input type="range" min="0" max="5" name="rating-range" id="rating-range" />
+    </div><br />
+    <b> v. Zip</b>
+    <div>
+        <label for="zip">Zip</label>
+        
+            <input type="text" pattern="[0-9]{5}" name="zip" id="zip" />
+        
+    </div>
+    
+    <br />
+    <div style="margin-top:10px;">
+        <h4> About the experiment</h4>
+
+        <p>
+            This above experiment is on different inputs that can be given to an html page.
+        </p>
+    </div>
+    
+    <hr/>
+    <h4> Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/Experiments/HTML/HTMLPage02.html" target="_blank">View Source</a>
+    <hr />
+</body>
+</html>

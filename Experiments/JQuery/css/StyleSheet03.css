@@ -1,0 +1,96 @@
+﻿body {
+    background-color:beige
+}
+h1{
+     text-align: center;
+}
+img{
+    position: relative;
+    height: 150px;
+    width: 250px;
+    border-radius: 5%;
+}
+
+.Indian,.Chinese ,.American, .Italian {
+    float:left;
+    padding: 10px;
+    margin: 5px;
+}
+.maindiv{
+    width: 100%;
+    clear:both;
+}
+.div-header {
+    
+    width: 100%;
+    text-align: center;
+    background-color: orchid;
+    padding: 3px;
+    margin: 1px;
+    position: relative;
+    margin:auto;
+    
+}
+.food-choice{
+    display:none;
+    position:relative;
+    margin-left: 150px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:gray;
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+   
+    
+}
+.content{
+    margin-left: 150px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:gray;
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+}
+.hideDiv{
+    display:none;
+}
+.header-menu{
+      width:100%;
+      align-content:center;
+
+}
+.header-menu li{
+    float:left;
+    border-color:ButtonHighlight;
+    border-radius:12px;
+    background-color: paleturquoise;
+    text-align:center;
+    font-size:25px;
+    width: 200px;
+    height: 30px;
+     text-decoration: none;
+     padding: 2px;
+     margin: 10px;
+     align-content:center;
+     list-style-type: none;
+     /**/
+}
+
+a {
+    text-decoration: none;
+} 
+.showPic{
+     position:relative;
+     
+     border-width: 2px;
+     border-style:solid;
+     border-color:gray;
+     width: 30%;
+     padding: 10px;
+     padding-left:150px;
+     margin-left:200px;
+     height: 200px;
+     align-content:center;
+}
