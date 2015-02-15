@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Populate data using Angular from web service</title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/JavaScriptAngular03.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="ExerciseApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center">Add a fourite item</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    Extending previous experiment which demonstrates the Angular framework, here I am adding a new functionlity, where
+                    a user can select any of the items displayed in table and make it a favourite. It will be displayed in a separate
+                    table above. User can delete it.  This is a simple experiment demonstrating the use of Angular and required data 
+                    is displayed on the screen
+                </p>
+                <hr />
+            </div>
+        </article>
+        <div ng-controller="ExerciseController" class="container">
+            <h1> Favourite</h1>
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="exercise in favoriteMovies">
+                        <td>{{exercise.name}}</td>
+                        <td>{{exercise.description}}</td>
+                        <td>{{exercise.category}}</td>
+                        <td>{{exercise.newC}}</td>
+                        <td>
+
+                            <button ng-click="removeFavExercise(exercise)" class="btn-danger btn">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th><input ng-model="exercise.name" class="form-control" /></th>
+                        <th><input ng-model="exercise.description" class="form-control" /></th>
+                        <th><input ng-model="exercise.category" class="form-control" /></th>
+                        <th>
+                            <button ng-click="addExercise()" class="btn btn-success " />
+                            <span class="glyphicon glyphicon-plus" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="exercise in exercises">
+                        <td>{{exercise.name}}</td>
+                        <td>{{exercise.description}}</td>
+                        <td>{{exercise.category}}</td>
+                        <td>{{exercise.newC}}</td>
+                        <td>
+                            <button ng-click="selectExercise(exercise)" class="btn-warning btn">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button ng-click="removeExercise(exercise)" class="btn-danger btn">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button ng-click="addToFovorites(exercise)" class="btn btn-info ">
+                                <span class="glyphicon glyphicon-star"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                          app.controller("ExerciseController",
+                            function ($scope,$http) {
+       
+                                $http.get("http://wger.de/api/v2/exercise/?format=json&language=2&&limit=5&callback=JSON_CALLBACK")
+                                .success(function (response){
+                                    $scope.exercises = response.results;
+                            });
+                                $scope.favoriteMovies = [];
+                            $scope.addToFovorites = function (exercise) {
+                                $scope.favoriteMovies.push(exercise);
+                            }
+                          
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+               Once the data is received from the web service using angular then it is rendered on UI. Besides every item there will be
+                a option shown where user can make the item as favourite. So once user click on favourite button then a method call is made and
+                that particular data is added to a new array know to be favoriteMovies. There will be separate section on UI to display it.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/angular03.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/JS/JavaScriptAngular03.js" target="_blank">JS Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://angularjs.org/" target="_blank">Angular</a>
+
+            <hr />
+        </div>
+</div>
+</body>
+</html>

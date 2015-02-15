@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Populate data using Angular from web service</title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/JavaScriptAngular02.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="ExerciseApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center">Populate data using Angular</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    This experiment demonstrates the Angular framework. Here I am using Angular frameqwork to fetch data from the web API.
+                      I will assign the data to scope variables and it render  on your UI using the placeholders.
+                    This is a simple experiment demonstrating the use of Angular and required data is displayed on the screen
+                </p>
+                <hr />
+            </div>
+        </article>
+        
+        <div ng-controller="ExerciseController" class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th><input ng-model="exercise.name" class="form-control" /></th>
+                        <th><input ng-model="exercise.description" class="form-control" /></th>
+                        <th><input ng-model="exercise.category" class="form-control" /></th>
+                        <th>
+                            <button ng-click="addExercise()" class="btn btn-success " />
+                            <span class="glyphicon glyphicon-plus" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="exercise in exercises">
+                        <td>{{exercise.name}}</td>
+                        <td>{{exercise.description}}</td>
+                        <td>{{exercise.category}}</td>
+                        <td>{{exercise.newC}}</td>
+                        <td>
+                            <button ng-click="selectExercise(exercise)" class="btn-warning btn">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button ng-click="removeExercise(exercise)" class="btn-danger btn">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+<hr/>
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                          app.controller("ExerciseController",
+                            function ($scope,$http) {
+       
+                                $http.get("http://wger.de/api/v2/exercise/?format=json&language=2&&limit=5&callback=JSON_CALLBACK")
+                                .success(function (response){
+                                    $scope.exercises = response.results;
+                            });
+                              $scope.removeExercise = function (exercise) {
+                                    var index = $scope.exercises.indexOf(exercise);
+                                    $scope.exercises.splice(index, 1);
+                                }
+                           &lt;tr ng-repeat="exercise in exercises">
+                           &lt;td>exercise.title&lt;/td>
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+                Here I am using Angular frameqwork to fetch data from the web API. Above mentioned is the way to achieve this.
+                After recieving the data I am assigning the results to a scope variable exercises. As there we will be placeholders on my UI to
+                 collect this data so it will be rendered on UI. If I make any change to data in model then it will be reflected on UI.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/angular02.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/JS/JavaScriptAngular02.js" target="_blank">JS Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://angularjs.org/" target="_blank">Angular</a>
+
+            <hr />
+        </div>
+</div>
+</body>
+</html>
