@@ -164,6 +164,7 @@
     <li><a href="images/autoimage.aspx" target="_blank">Images</a></li>
     <li><a href="blog/" target="_blank">Blog</a></li>
     <li><a href="story/index.htm?../Experiments/story.txt" target="_blank">Experiments</a></li>
+    <li><a href="https://github.com/ashutver/CS5610-ashutver" target="_blank">GitHub</a></li>
 </ul>
 
 <hr />
