@@ -17,6 +17,10 @@ app.controller("ExerciseController",
         $scope.addToFovorites = function (exercise) {
             $scope.favoriteMovies.push(exercise);
         }
+        $scope.removeFavExercise = function (exercise) {
+            var index = $scope.favoriteMovies.indexOf(exercise);
+            $scope.favoriteMovies.splice(index, 1);
+        }
       
         $scope.removeExercise = function (exercise) {
             var index = $scope.exercises.indexOf(exercise);

@@ -4,3 +4,4 @@
 ../story/index.htm?../Experiments/JQuery/JQueryStory.txt             WEEK 3 - JQuery Experiments
 ../story/index.htm?../Experiments/ajax/AJAXStory.txt                 WEEK 4 - Jquery Ajax
 ../story/index.htm?../Experiments/angular/AngularStory.txt           WEEK 4 - Introduction to Angular
+../story/index.htm?../Experiments/angular/AngularStory1.txt          WEEK 5 - Routing using Angular

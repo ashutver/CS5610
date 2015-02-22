@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Populate data using Angular from web service</title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.js"></script>
+    <script src="JS/angular-route.min.js"></script>
+    <script src="JS/JavaScriptAngular07.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title>Angular Routing</title>
+</head>
+<body style="padding-top:50px" ng-app="CourseApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center">Profile of a User</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    Extending previous experiment here user can view his profile. following are the users and courses:
+                   <h4>Users</h4>
+                    <h5>username: "john", password: "john", role: "admin" </h5>
+                    <h5>username: "mike", password: "mike", role: "professor", teaching:[2,3] </h5>
+                       
+                    <h5>username: "roy", password: "roy", role: "student" , registered:[1,2]</h5>
+                            
+                    <h4> Courses</h4>
+                    <h5>title: "PDP"</h5>
+                     <h5>title: "Information Retrieval"</h5>
+                     <h5>title: "Web dev"</h5>
+                     <h5> title: "Algo" </h5>
+                    Accordingly the user logs in and moves to the profile page. If a professor, I will show the courses that particular professor is
+                     teaching and if a student then I will show the courses he is enrolled in.
+</p>
+                <hr />
+            </div>
+        </article>
+        <div>
+            <nav ng-controller="NavController" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Project name</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                           <li><a href="#/home">Home</a></li>
+                            <li><a href="#/about">About</a></li>
+                            <li><a href="#/contact">Contact</a></li>
+                            <li ng-show="currentUser" ><a href="#/profile/{{currentUser.username}}">Profile</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#/home" ng-click="logout()" ng-show="currentUser" >LogOut</a></li>
+                        </ul>
+                            <form class="navbar-form navbar-right" ng-show="!currentUser">
+                                <div class="form-group">
+                                    <input type="text" ng-model="username" placeholder="Username" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" ng-model="password" placeholder="Password" class="form-control">
+                                </div>
+                                <button ng-click="login()" class="btn btn-success">Sign in</button>
+
+                            </form>
+</div><!--/.navbar-collapse -->
+                    </div>
+          </nav>
+        </div>
+       <div ng-view>
+       </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                    app.controller("ProfileController", function ($scope, UserService, $routeParams, CourseService) {
+                        var username = $routeParams.username;
+                        $scope.username = username;
+                        var currentuser = UserService.getCurrentuser();
+                        $scope.currentUser= currentuser;
+   
+                        if (currentuser.role == "professor") {
+                            $scope.teaching = CourseService.getCourseByIndices(currentuser.teaching);
+                        } else if (currentuser.role == "student") {
+                            $scope.registered = CourseService.getCourseByIndices(currentuser.registered);
+                        }
+                     });
+                        app.factory("CourseService", function () {
+                            var courses = [
+                               { title: "PDP" },
+                               { title: "Information Retrieval" },
+                               { title: "Web dev" },
+                               { title: "Algo" }
+                            ];
+                            var addCourse = function (course) {
+                                courses.push(course);
+                            };
+                            var getCourseByIndex = function (index) {
+                                return courses[index];
+                            };
+                            var getCourseByIndices = function (indices) {
+                                var responseCourses = [];
+                                for (var i in indices) {
+                                    var course = courses[indices[i]];
+                                    responseCourses.push(course);
+                                }
+                                return responseCourses;
+                            };
+                            return {
+                                addCourse: addCourse,
+                                getCourseByIndex: getCourseByIndex,
+                                getCourseByIndices: getCourseByIndices
+                            }
+                        });
+                          
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+               here I will display separate section for professor or student. For a professor I need to show the courses that professor is 
+                teaching and for a student I need to show the courses that student has registered. so accordingly I will be setting the scope 
+                for variables as teaching or registered depending upon the person logged in.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/angular07.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/JS/JavaScriptAngular07.js" target="_blank">JS Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://angularjs.org/" target="_blank">Angular</a>
+
+            <hr />
+        </div>  
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Populate data using Angular from web service</title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.js"></script>
+    <script src="JS/angular-route.min.js"></script>
+    <script src="JS/JavaScriptAngular08.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title>Angular Routing</title>
+</head>
+<body style="padding-top:50px" ng-app="CourseApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center">User able to add/delete courses</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    Extending previous experiment user can add/drop courses. following are the users and courses:
+                    <h4>Users</h4>
+                    <h5>username: "john", password: "john", role: "admin" </h5>
+                    <h5>username: "mike", password: "mike", role: "professor", teaching:[2,3] </h5>
+
+                    <h5>username: "roy", password: "roy", role: "student" , registered:[1,2]</h5>
+
+                    <h4> Courses</h4>
+                    <h5>title: "PDP"</h5>
+                    <h5>title: "Information Retrieval"</h5>
+                    <h5>title: "Web dev"</h5>
+                    <h5> title: "Algo" </h5>
+                    Accordingly the user logs in and moves to the profile page. Here according to the role of the user he will be shown either
+                    courses taught or courses registered and along with remaining courses. User has as option to add/delete the course.
+                    
+                </p>
+                <hr />
+            </div>
+        </article>
+        <div>
+            <nav ng-controller="NavController" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Project name</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                           <li><a href="#/home">Home</a></li>
+                            <li><a href="#/about">About</a></li>
+                            <li><a href="#/contact">Contact</a></li>
+                            <li ng-show="currentUser" ><a href="#/profile/{{currentUser.username}}">Profile</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#/home" ng-click="logout()" ng-show="currentUser" >LogOut</a></li>
+                        </ul>
+                            <form class="navbar-form navbar-right" ng-show="!currentUser">
+                                <div class="form-group">
+                                    <input type="text" ng-model="username" placeholder="Username" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" ng-model="password" placeholder="Password" class="form-control">
+                                </div>
+                                <button ng-click="login()" class="btn btn-success">Sign in</button>
+
+                            </form>
+</div><!--/.navbar-collapse -->
+                    </div>
+          </nav>
+        </div>
+       <div ng-view>
+       </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                     app.controller("ProfileController", function ($scope, UserService, $routeParams, CourseService) {
+                       if (currentuser.role == "professor") {
+                            $scope.teaching = CourseService.getCourseByIndices($scope.currentUser.teaching);
+                            $scope.remainingCourses = UserService.getRemainingCourses();
+                          
+                        } else if (currentuser.role == "student") {
+                            $scope.registered = CourseService.getCourseByIndices($scope.currentUser.registered);
+                            $scope.remainingCourses = UserService.getRemainingCourses();
+                        }
+                     });
+                app.factory("UserService", function (CourseService) {
+                     var getRemainingCourses = function () {
+                        var remainingCourses = [];
+                        if (currentuser.role == "professor") {
+                            remainingCourses = CourseService.getRemainingCourses(currentuser.teaching);
+                        } else if (currentuser.role == "student") {
+                            remainingCourses = CourseService.getRemainingCourses(currentuser.registered);
+                        }
+                            return remainingCourses;
+                    }
+                 });
+                 app.factory("CourseService", function () {
+                  var getRemainingCourses = function (indices) {
+                        var remainingCourses = [];
+                        for (var i in courses) {
+                           var flag = contains(indices , i);
+                           if ( !flag) {
+                               remainingCourses.push(courses[i]);
+                            }
+                        }
+                        return remainingCourses;
+                    }
+                 });
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+               Here as user moves to profile page, he will be shown option to add/delete courses. here in ProfileController, I will get remainingCourses.
+                now userService will be called to get getRemainingCourses, which will call courseService to get remaining courses. The course list of a user
+                will be sent to course service that will iterate over courses and return the courses that are not passed as input.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/angular08.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/JS/JavaScriptAngular08.js" target="_blank">JS Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://angularjs.org/" target="_blank">Angular</a>
+
+            <hr />
+        </div>  
+    </div>
+
+</body>
+</html>
