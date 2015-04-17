@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Documentation</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Signup Functionality</h1>
+        <hr />
+        <p>
+           SignUp page where user can sign up. Following fields are to filled
+            <ul>
+                <li>Username</li>
+                <li>FirstName</li>
+                <li>LastName</li>
+                <li>Email</li>
+                <li>Password</li>
+            </ul>
+            Username is a unique field. I am handling this at client side where I check the username entered with all usernames present in database
+            and will only allow the control to hit nodeJS if username does not exists in database. Once user signup then user is shown profile page
+            by default.
+        </p>
+        <br />
+        <hr />
+        <h3>Snapshot</h3>
+        <div>
+            <img src="images/register.PNG" />
+        </div>
+        <hr />
+        <h3>Register User - Services</h3>
+        <p>
+            The services for registering a new user are created using NodeJS and are hosted on openshift. 
+            The following sevice are playing a role on this page:
+            <ol>
+                <li>Register a new user, store all the details in DB and respond back accordingly</li>
+            </ol>
+        </p>
+        <hr />
+        <a href="register.html" class="next">Next Page</a>
+    </div>
+</body>
+</html>

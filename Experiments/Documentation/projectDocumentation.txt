@@ -1,0 +1,14 @@
+../story/whatisnext.htm?../Experiments/story.txt                     Project Introduction
+../story/index.htm?../Experiments/HTML/htmlStory.txt                 Project Flow Chart
+../story/index.htm?../Experiments/responsive/responsiveStory.txt     Login Page
+../story/index.htm?../Experiments/JQuery/JQueryStory.txt             Sign up Page
+../story/index.htm?../Experiments/ajax/AJAXStory.txt                 Profile Page
+../story/index.htm?../Experiments/angular/AngularStory.txt           Workout Page
+../story/index.htm?../Experiments/angular/AngularStory1.txt          Exercise Page
+../story/index.htm?../Experiments/NodeJs/NodeJsStory.txt             Exercise Detail Page
+../story/index.htm?../Experiments/MongoDb/MongoStory.txt             Muscle Page
+../story/index.htm?../Experiments/ProjExp/ProjStory.txt              Equipment Page
+../story/index.htm?../Experiments/ProjExp/ProjStory2.txt             Nutrition Page
+../story/index.htm?../Experiments/ProjExp/ProjStory3.txt             Nutrition Detail page
+	                                                             Data Storage in MongoDB
+	                                                             A Thank You Note
