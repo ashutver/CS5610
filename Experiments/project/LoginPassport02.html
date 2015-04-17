@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Implementing Security</title>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.js"></script>
+    <script src="JS/angular-route.min.js"></script>
+    <script src="JS/project01.js"></script>
+    <script src="views/profile/profile.js"></script>
+    <script src="views/login/login.js"></script>
+    <script src="views/register/register.js"></script>
+    <script src="views/workout/workout.js"></script>
+    <script src="views/workoutdetail/workoutdetail.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="JS/jquery.js"></script>
+    <script src="JS/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+</head>
+<body ng-app="PassportApp" style="padding-top:40px">
+    <div class="container" >
+        <header>
+            <h1 class="text-center">Using Passport in node.js for authentication</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    These Experiments demonstrate use of authentication middleware for Node.js known as passport. Once the user is logged in then
+                    user can view additional menu items and additional functionality. Now user can log out and again all user specific functionality
+                    has to be hidden. this is done once user clicks on logout button.
+                    username: "a", password:"a"
+                </p>
+                <hr />
+            </div>
+        </article>
+        <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="navCntrl">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#/home">Home</a></li>
+                        <li ng-show ="currentUser"><a href="#/profile">Profile</a></li>
+                        <li ng-show="currentUser"><a href="#/workout">Workout   </a></li>
+                        <li ><a href="#/login">Login</a></li>
+                        <li><a href="#/logout" ng-click="logout()">Logout</a></li>
+                    </ul>
+                    <!--form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                    </!--form-->
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
+        <div ng-view></div>
+        <div class="maindiv">
+           
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                    Client side  >>
+                      app.config(['$routeProvider',
+                          function ($routeProvider) {
+                              $routeProvider.
+                                when('/developer', {
+                                    templateUrl: 'developerApp/home.html',
+                                    controller: 'homeController'
+                                }).
+                                when('/developer/:id', {
+                                    templateUrl: 'developerApp/details.html',
+                                    controller: 'detailsController'
+                                }).
+                                otherwise({
+                                    redirectTo: '/developer'
+                                });
+                          }]);
+
+                           app.controller("homeController",
+                                function ($scope,$http) {
+                                    $scope.edit = null;
+                                    $http.get("/api/developer")
+                                    .success(function (response) {
+                                        $scope.developers = response;
+                                    });
+                           app.controller("detailsController", function ($scope, $http, $routeParams) {
+                                var index = $routeParams.id;
+                                $http.get("/api/developer/" + index)
+                                .success(function (response) {
+                                    $scope.developer = response;
+                                });
+                            });
+                        app.controller("navCntrl", function ($scope, $http, $location, $rootScope) {
+                            $rootScope.currentUser = null;
+                            $scope.logout = function () {
+                                $http.post("/api/logout")
+                                .success(function (res) {
+                                    $rootScope.currentUser = null;
+                                    $location.url("/home");
+                                });
+                            }
+                        });
+
+                  Server Side >>
+                                       app.post("/api/logout", function (req, res) {
+                                            req.logout(); res.send(200);
+                                        });
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+                
+                Here at client side we will call the post method asking server to logout and at server it will call passport method which
+                will be provided to request know as logout() to log out and response will be sent back as 200.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/NodeJs/public/index05.html" target="_blank">HTML Source</a>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/ProjExp/JS/project01.js" target="_blank">JS Source</a>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/NodeJs/server.js" target="_blank">Server Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://nodejs.org/" target="_blank">Node</a>
+
+            <hr />
+        </div>
+    </div>
+</body>
+</html>
