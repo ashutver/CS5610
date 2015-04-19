@@ -13,7 +13,8 @@ app.controller("ExerciseController",
             var index = $scope.exercises.indexOf(exercise);
             $scope.exercises.splice(index, 1);
         }
-        $scope.addExercise = function () {
+        $scope.addExercise = foo;
+        function add() {
             // alert($scope.exercise.title);
             var newExercise = {
                 title: $scope.exercise.title,
@@ -25,4 +26,16 @@ app.controller("ExerciseController",
         $scope.selectExercise = function (exercise) {
             $scope.exercise = exercise;
         }
+       // foo();
+    /*    function foo() {
+            console.log("inside foo");
+            function bar() {
+                return 3;
+            }
+            return bar();
+            function bar() {
+                return 8;
+            }
+        }
+       alert(foo);*/
 });

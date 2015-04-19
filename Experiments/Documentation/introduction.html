@@ -9,11 +9,12 @@
     <div class="container">
         <h1>Introduction</h1>
         <hr />
-        <br />
-        <p>
-            Fitness Plus is my project under the course Web Developemnt (CS-5610) that I took during my graduation.
+       <p>
+           Fitness Plus is my project under the course Web Developemnt (CS-5610) that I took during my graduation.
            I have created a applciation on fitness. User can look at different exercises and create his workout. Basically
             people can find all information related to fitness whether it is about muscles or equipment or nutrition.
+           <br/>
+          I have used following api for my project:  <a href=" http://wger.de/api/v2/"> Wger api</a>
             <br />
             <h3>List of available functionalities :</h3>
             <table class="table">
@@ -26,23 +27,42 @@
                 <tbody>
                     <tr>
                         <td>Workouts</td>
-                        <td>It can be added multiple times and user can configure each of them for different locations</td>
+                        <td>user can create/edit/view/delete his workouts. user can view published workouts by other users.</td>
+                    </tr>
+                    <tr>
+                        <td>Workout follow/unfollow</td>
+                        <td>
+                            User can follow/unfollow workouts of other users
+                        </td>
                     </tr>
                     <tr>
                         <td>Exercise</td>
-                        <td>A user can multiple sticky notes on dashboard to make quick notes</td>
+                        <td>Exercise page displays all exercises grouped in categories. </td>
+                    </tr>
+                    <tr>
+                        <td>Exercise Details</td>
+                        <td>Details page displays exercise details. </td>
+                    </tr>
+                    <tr>
+                        <td>Exercise Details Comments</td>
+                        <td>User can view all comments on exercise details page. To write a comment user has to login. User can view
+                        profile of users who commented here </td>
                     </tr>
                     <tr>
                         <td>Muscle</td>
-                        <td>A user can Google information about some text</td>
+                        <td>Major Body muscles are shown and related exercises are shown</td>
                     </tr>
                     <tr>
                         <td>Equipment</td>
-                        <td>This widget helps in translating text to speech</td>
+                        <td>Equipments are shown here and once user clicks on them related exercises will be shown</td>
                     </tr>
                     <tr>
                         <td>Nutrition</td>
-                        <td>This widgets show time of different time zones depending upon user's choice</td>
+                        <td>Page displays different food items. User can search for a food item.</td>
+                    </tr>
+                    <tr>
+                        <td>Nutrition Details</td>
+                        <td>Details page displays nutrition details for a food item</td>
                     </tr>
                    
                 </tbody>
@@ -74,12 +94,19 @@
                 </tr>
                 <tr>
                     <td>Workout</td>
-                    <td>user can view his workouts along with workouts he is following along with published workouts by other users.</td>
+                    <td>user can create/edit/view/delete his workouts. user can view published workouts by other users.
+                   </td>
+                </tr>
+                <tr>
+                    <td>Workout follow/unfollow</td>
+                    <td>
+                         User can follow/unfollow workouts of other users
+                    </td>
                 </tr>
                 <tr>
                     <td>Workout Details</td>
                     <td>A user can edit a workout here. User can add more days or exercises to his workout. User can view other people
-                    workouts here.</td>
+                    workout details here.</td>
                 </tr>
                
                 <tr>
@@ -109,7 +136,9 @@
                 </tr>
             </tbody>
         </table>
+
         <hr />
+        
         <h3>Technologies used:</h3>
         <table class="table">
             <thead>
@@ -220,21 +249,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>MongoJS (Node module)</td>
+                    <td>Mongoose (Node module)</td>
                     <td>Helps in integrating MongoDB at server side</td>
                     <td>Server Side</td>
                 </tr>
-                <tr>
-                    <td>
-                        Node Mailer (Node Module)
-                    </td>
-                    <td>
-                        Helps in sending automated mails
-                    </td>
-                    <td>
-                        Server Side
-                    </td>
-                </tr>
+               
             </tbody>
         </table>
         <hr />
@@ -248,10 +267,10 @@
         </ul>
         <hr />
         <br />
-        The complete source of project is available at GitHub: <a href="https://github.com/rishi11/CS5610-Project">Code</a>
+        The complete source of project is available at GitHub: <a href="https://github.com/ashutver/CS5610-ashutver/">Code</a>
         <br />
         <br />
-        <a href="walkthrough.html" class="nextpage">Next Page</a>
+        <a href="DataStorageDB.html" class="nextpage">Next Page</a>
     </div>
 </body>
 </html>

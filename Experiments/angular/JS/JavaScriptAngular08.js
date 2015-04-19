@@ -33,18 +33,34 @@ app.controller("ProfileController", function ($scope, UserService, $routeParams,
         UserService.removeCourse(index);
         //need to refresh
         $scope.currentUser = UserService.getCurrentuser();
-        console.log($scope.currentUser);
-        if (currentuser.role == "professor") {
+       // console.log($scope.currentUser);
+        assignThings();
+     /*   if (currentuser.role == "professor") {
             $scope.teaching = CourseService.getCourseByIndices($scope.currentUser.teaching);
             $scope.remainingCourses = UserService.getRemainingCourses();
         } else if (currentuser.role == "student") {
             $scope.registered = CourseService.getCourseByIndices(currentuser.registered);
             $scope.remainingCourses = UserService.getRemainingCourses();
-        }
-    }
+        }*/
+    } // removecourse
 
-    $scope.addCourse = function (course) {
+    $scope.addCourse = addCourse;
+        function addCourse (course) {
         UserService.addCourse(course);
+        assignThings();
+      /*  if (currentuser.role == "professor") {
+            $scope.teaching = CourseService.getCourseByIndices($scope.currentUser.teaching);
+            $scope.remainingCourses = UserService.getRemainingCourses();
+            //console.log($scope.teaching);
+        } else if (currentuser.role == "student") {
+            $scope.registered = CourseService.getCourseByIndices($scope.currentUser.registered);
+            $scope.remainingCourses = UserService.getRemainingCourses();
+        }*/
+    }  // addcourse
+    assignThings();
+    console.log("outside things");
+    function assignThings() {
+        console.log("inside things");
         if (currentuser.role == "professor") {
             $scope.teaching = CourseService.getCourseByIndices($scope.currentUser.teaching);
             $scope.remainingCourses = UserService.getRemainingCourses();
@@ -54,15 +70,6 @@ app.controller("ProfileController", function ($scope, UserService, $routeParams,
             $scope.remainingCourses = UserService.getRemainingCourses();
         }
     }
-  
-        if (currentuser.role == "professor") {
-            $scope.teaching = CourseService.getCourseByIndices($scope.currentUser.teaching);
-            $scope.remainingCourses = UserService.getRemainingCourses();
-            //console.log($scope.teaching);
-        } else if (currentuser.role == "student") {
-            $scope.registered = CourseService.getCourseByIndices($scope.currentUser.registered);
-            $scope.remainingCourses = UserService.getRemainingCourses();
-        }
     
 });
 

@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.js"></script>
+    <script src="JS/angular-route.min.js"></script>
+    <script src="JS/Loginapp01.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+    <title></title>
+</head>
+<body style="padding-top:50px" ng-app="LoginApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center"> Log in functionality </h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    Extending previous experiment here I am implementing the log in functionality. following are the users:
+                    <h5> username: "Bob", password: "mark" </h5>
+                    <h5> username: "mike", password: "mike" </h5>
+                    <h5> username:"roy" ,  password:"roy" </h5>
+                    Here Initially the profile option will be hidden and as user logins then profile option will be displayed and
+                    login button will be hidden. Once user logs in, user can move to profile menu.
+                </p>
+                <hr />
+            </div>
+        </article>
+        <div>
+            <nav ng-controller="loginController" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Project name</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/home">Home</a></li>
+                            <li><a href="#/about">About</a></li>
+                            <li><a href="#/contact">Contact</a></li>
+                            <li ng-show="currentUser"><a href="#/profile/{{currentUser.userName}}">Profile</a></li>
+                        </ul>
+
+                        <form class="navbar-form navbar-right" ng-show="!currentUser">
+                            <div class="form-group">
+                                <input type="text" ng-model="user.userName" placeholder="Username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" ng-model="user.password" placeholder="Password" class="form-control">
+                            </div>
+                            <button ng-click="login(user)" class="btn btn-success">Sign in</button>
+                            <button id="create-user" ng-click="register(user)" class="btn btn-success">Sign up</button>
+
+                        </form>
+                    </div><!--/.navbar-collapse -->
+                </div>
+            </nav>
+        </div>
+        <div ng-view>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                            app.factory("UserService", function () {
+                                    var currentuser = null;
+                                    var users = [
+                                        { username: "john", password: "john" },
+                                        { username: "mike", password: "mike" },
+                                        {username:"roy" , password:"roy"}
+                                    ]
+                                    var login = function(username,password){
+                                        for(var u in users)
+                                        {
+                                            if(users[u].username == username)
+                                            {
+                                                currentuser = users[u];
+                                                return users[u];
+                                            }
+                                        }
+                                        return null;
+                                    };
+                                    var getCurrentuser = function () {
+                                        return currentuser;
+                                    }
+                                    return {
+                                        login: login,
+                                        getCurrentuser: getCurrentuser
+                                    }
+                                });
+                          
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                Here I defined a userService. All functionality related to user is present here. As the user will write the login username and
+                password in Login screen, it will be passed to user service and it will match the credentials with the users array and if there
+                is a match then currentUser will be set in the scope and accordingly the login button will be hidden and profile
+                button will show up.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/angular05.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/angular/JS/JavaScriptAngular05.js" target="_blank">JS Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="https://angularjs.org/" target="_blank">Angular</a>
+
+            <hr />
+        </div>
+
+        <div id="dialog-form" title="Create new user">
+            <p class="validateTips">All form fields are required.</p>
+            <form>
+                <fieldset>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Jane Smith" class="text ui-widget-content ui-corner-all form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="xxxxxxx" class="text ui-widget-content ui-corner-all form-control">
+
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="jane@smith.com" class="text ui-widget-content ui-corner-all form-control">
+
+                        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                        </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

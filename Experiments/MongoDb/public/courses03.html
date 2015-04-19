@@ -1,0 +1,151 @@
+﻿a<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.js"></script>
+    <script src="JS/angular-route.min.js"></script>
+    <script src="JS/Courseapp03.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body  ng-app="CourseApp">
+    <div class="container" ng-controller="CourseController">
+        <header>
+            <h1 class="text-center">Add associated records in MongoDB</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    This experiment demonstrates the usage of MongoDB along with Angular and NodeJs.
+                    Intially I have created a table on UI that uses angular to call a service. this service will be created in
+                    Node server which will use a Data model to interact with MongoDb. Using this service angular will collect data and populate
+                    the table on UI. This is a simple experiment demonstrating the use of MongoDB. Here each course can have multiple projects
+                    associated with it and user can add/delete projects to a course
+                </p>
+                <hr />
+            </div>
+        </article>
+       <table class="table table-striped">
+           <tbody>
+               <tr>
+                   <th>Course Name</th>
+                   <th> Branch</th>
+                   <th> created date</th>
+               </tr>
+               <tr>
+                   <th>
+                       <input ng-model="course.courseName" class="form-control" />
+                   </th>
+                   <th>
+                       <input ng-model="course.branch" class="form-control" />
+                   </th>
+                  
+                   <th>
+                       <button ng-click="add(course)"   class="btn btn-success pull-right">
+                           <span class="glyphicon glyphicon-plus"></span>
+                       </button>
+                        
+                   </th>
+               </tr>
+               <tr ng-repeat="course in courses">
+                   <td>{{course.courseName}}</td>
+                   <td>{{course.branch}}</td>
+                   <td>{{course.created | date}}</td>
+                   <td>
+                       <button ng-click="remove(course._id)" class="btn btn-danger pull-right">
+                           &times;
+                       </button>
+                       <button ng-click="select($index)" class="btn btn-default pull-right">
+                           <span class="glyphicon glyphicon-pencil"></span>
+                       </button>
+                   </td>
+
+               </tr>
+           </tbody>
+       </table> 
+        <h2> Projects</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Project Name</th>
+            </tr>
+            <tr>
+                <th>
+                    <input ng-model="project.name" class="form-control" />
+                </th>
+                <th>
+                    <button ng-click="addProject(project)"  class="btn btn-success pull-right">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                   
+                </th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="proj in course.project">
+                    <td>{{proj.name}}</td>
+                    <td>
+                        <button ng-click="removeProject($index)" class="btn btn-danger pull-right">
+                            &times;
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="maindiv">
+
+            <h4> Code Snippet</h4>
+            <hr />
+            <pre>
+                  Client side  >>
+                        app.controller("CourseController", function ($scope, $http) {
+                            $http.get("/api/course" )
+                                .success(function (response) {
+                                    $scope.courses = response;
+                                });
+                                    $scope.addProject = function (project) {
+                                        $scope.course.project.push(project);
+                                        $http.put("/api/course/" + $scope.course._id, $scope.course)
+                                        .success(function (response) {
+                                            $scope.courses = response;
+                                            $scope.project = {};
+                                        })
+                                    };
+                    
+                  Server Side >>
+                                  app.put('/api/course/:index', function (req, res) {
+                                    Course.update({ _id: req.params.index }, { $set: req.body },
+                                    function (err, doc) {
+                                        Course.find(function (err, data) {
+                                            res.json(data);
+                                        });
+                                       });
+                                });
+
+                     
+        </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+                I will expose services created at server which will be used by angular at client side. for instance, editing an existing record, angular
+                will post to server and server will use data model to update the record in database. Here when user selects a course
+                then associated projects will be shown below. User can enter new projects or delete a project. Changes will be updated
+                in course array at client side which will then be persisted in db.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/MongoDb/public/courses03.html" target="_blank">HTML Source</a>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/MongoDb/public/JS/Courseapp03.js" target="_blank">JS Source</a>
+            <a href="http://net4.ccs.neu.edu/home/ashutver/fileview/Default.aspx?~/Experiments/MongoDb/server.js" target="_blank">Server Source</a>
+            <hr />
+            <h4>Refrences</h4>
+            <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>
+
+            <hr />
+        </div>
+    </div>
+    
+    </body>
+</html>
