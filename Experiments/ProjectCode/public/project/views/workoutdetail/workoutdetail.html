@@ -1,10 +1,11 @@
 
-<div id="page-title" class="page-header">
-    <h4>Workout:: {{workout.description}}</h4>
-    <h4> Workout Created by: {{workout.username}}</h4>
-</div>
+
 <div id="main">
     <div class="container">
+        <div id="page-title" class="page-header">
+            <h4>Workout:: {{workout.description}}</h4>
+            <h4> Workout Created by:: {{workout.username}}</h4>
+        </div>
         <div class="row">
             <div class="col-sm-8">
                 <button ng-show="days.length == 0 &&  workout.userid == userId" class="btn btn-default btn-block" id="create-day" > 
@@ -92,12 +93,20 @@
                 </div> 
             
             <div class="col-sm-4">
-                <div>
-                   <!-- content to be added-->
+                <div  id="main-sidebar">
+                    <h3>Steps</h3>
+                    <ol>
+                        <li>Add training days</li>
+                        <li>Add workout sets to days</li>
+                        <li>
+                            Set the repetitions for each set
+                            (use '99' for 'all repetitions you can do')</li>
+                     </ol>
+                    <h4> Here for an exercise sets and repetitions will be shown in form sets*repetitions</h4>
                 </div>
             </div>
-        </div>
     </div>
+        </div>
 </div>
 <!--  Dialog for adding workout day -->
 <div id="dialog-form" title="Add Workout day">

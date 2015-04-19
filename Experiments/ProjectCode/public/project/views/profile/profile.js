@@ -3,8 +3,12 @@ app.controller("ProfileController", function ($scope, $http, $location, $rootSco
     if ($routeParams.id != null) {
         if ($rootScope.currentUser != null && $routeParams.id == $rootScope.currentUser._id) {
             userId = $rootScope.currentUser._id;
+             $http.get("/api/user/" + userId)
+			            .success(function (response) {
+                $rootScope.currentUser = response[0];
+			});
             $scope.unfollowflag = true;
-            console.log("f");
+            //console.log("f");
         } else {
             $scope.unfollowflag = false;
             console.log("s");
@@ -12,13 +16,17 @@ app.controller("ProfileController", function ($scope, $http, $location, $rootSco
             $http.get("/api/user/" + userId)
             .success(function (response) {
                 $scope.currentUser = response[0];
-                console.log($scope.currentUser);
+              //  console.log($scope.currentUser);
             });
         }
     } else if ($rootScope.currentUser != null) {
         userId = $rootScope.currentUser._id;
         $scope.unfollowflag = true;
         console.log($scope.unfollow);
+        $http.get("/api/user/" + userId)
+					            .success(function (response) {
+		                $rootScope.currentUser = response[0];
+			});
     }
   //  console.log($rootScope.currentUser.comment);
     $http.get("/api/famousworkout_userspecific/" + userId)
@@ -59,7 +67,7 @@ app.controller("ProfileController", function ($scope, $http, $location, $rootSco
            console.log("response");
            console.log(response);
            $scope.followingworkouts = response;
-           
+
        });
     }
 

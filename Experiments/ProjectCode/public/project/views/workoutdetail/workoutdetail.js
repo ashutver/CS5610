@@ -231,7 +231,8 @@ app.controller("workdetCtrl", function ($scope, $http, $location, $rootScope, $r
        
         $("#id_exer").catcomplete({
             delay: 0,
-            source: exercisesWithCategories
+            source: exercisesWithCategories,
+            scroll: scroll
         });
         $("#slider").slider({
             value: 4,
