@@ -1,7 +1,0 @@
-../../story/whatisnext.htm?../Experiments/HTML/htmlStory.txt                   HTML & CSS Experiments
-HtmlPage01.html        HTML BASIC TAGS
-HtmlPage02.html        HTML Input Fields
-HtmlPage03.html        Inline CSS
-HtmlPage04.html        Using Style Sheet
-HtmlPage05.html        Create a Grid using CSS
-HtmlPage06.html        Using map tag in images

@@ -1,6 +1,0 @@
-../../story/whatisnext.htm?../Experiments/responsive/responsiveStory.txt                   Responsive Experiments
-Responsive02.html        Responsive Text
-Responsive03.html        Responsive Menu
-Responsive04.html        Responsive Image
-Responsive05.html		 Responsive Table
-Responsive06.html		 Responsive Design using BootStrap

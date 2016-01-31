@@ -1,6 +1,0 @@
-../../story/whatisnext.htm?../Experiments/angular/AngularStory1.txt                   Routing in Angular
-angular04.html        Angular Routing 
-angular05.html        Log in functionality
-angular06.html        Log out functionality
-angular07.html        Profile display
-angular08.html        Add/delete option for a profile user

@@ -1,3 +1,0 @@
-../../story/whatisnext.htm?../Experiments/ajax/AJAXStory.txt                   JQuery AJAX
-JQueryAjax01.html         Fetching data using AJAX
-JQueryAjax02.html         Display data based on a drop down
